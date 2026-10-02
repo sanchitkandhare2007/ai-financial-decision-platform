@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Financial Decision Support Platform</title>
+<meta name="description" content="Educational loan eligibility, EMI, credit score analysis and AI financial guidance.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="bg-glow g1"></div><div class="bg-glow g2"></div>
+
+<header class="nav">
+  <a class="brand" href="#home">💠 FinSight <span>AI</span></a>
+  <button class="burger" id="burger" aria-label="Toggle menu" aria-expanded="false">☰</button>
+  <nav id="menu">
+    <a href="#home">Home</a><a href="#eligibility">Loan Eligibility</a><a href="#emi">EMI Calculator</a>
+    <a href="#credit">Credit Score</a><a href="#ai">AI Financial Tips</a><a href="#records">Records</a><a href="#about">About</a>
+  </nav>
+</header>
+
+<main>
+<!-- HOME -->
+<section id="home" class="page">
+  <div class="hero glass">
+    <h1>AI-Powered Financial Decision Support</h1>
+    <p>Understand your loan eligibility, calculate EMIs, analyze credit information and get AI-powered financial guidance.</p>
+    <div class="btn-row">
+      <a class="btn primary" href="#eligibility">Check Loan Eligibility</a>
+      <a class="btn" href="#emi">Calculate EMI</a>
+      <a class="btn" href="#credit">Analyze Credit Score</a>
+    </div>
+    <p class="note">All results are educational estimates, not financial advice or an actual bank approval.</p>
+  </div>
+  <h2 class="section-title">Dashboard</h2>
+  <div class="grid">
+    <a class="card glass hover" href="#eligibility"><div class="icon">✅</div><h3>Loan Eligibility</h3><p>Check a simple, explainable eligibility estimate.</p></a>
+    <a class="card glass hover" href="#emi"><div class="icon">🧮</div><h3>EMI Calculator</h3><p>Monthly EMI, total interest and total payment.</p></a>
+    <a class="card glass hover" href="#credit"><div class="icon">📈</div><h3>Credit Score Analyzer</h3><p>Understand your score range and how to improve it.</p></a>
+    <a class="card glass hover" href="#ai"><div class="icon">🤖</div><h3>AI Financial Tips</h3><p>Ask Claude simple finance questions.</p></a>
+    <a class="card glass hover" href="#records"><div class="icon">🗂️</div><h3>Financial Records</h3><p>View your saved checks (Google Sheets).</p></a>
+    <div class="card glass"><div class="icon">🔒</div><h3>Privacy</h3><p>No names, PAN, Aadhaar or bank details are collected.</p></div>
+  </div>
+</section>
+
+<!-- ELIGIBILITY -->
+<section id="eligibility" class="page">
+  <h2 class="section-title">Loan Eligibility Checker</h2>
+  <div class="two-col">
+    <form id="eligForm" class="glass form" novalidate>
+      <div class="field"><label for="e_income">Monthly income (₹)</label><input id="e_income" type="number" step="any" placeholder="e.g. 45000"><small class="err"></small></div>
+      <div class="field"><label for="e_emp">Employment type</label>
+        <select id="e_emp"><option value="">Select…</option><option>Salaried</option><option>Self-employed</option><option>Business owner</option><option>Other</option></select><small class="err"></small></div>
+      <div class="field"><label for="e_age">Age (years)</label><input id="e_age" type="number" step="1" placeholder="e.g. 28"><small class="err"></small></div>
+      <div class="field"><label for="e_emis">Existing monthly EMIs (₹)</label><input id="e_emis" type="number" step="any" placeholder="0 if none"><small class="err"></small></div>
+      <div class="field"><label for="e_score">Credit score (300–900)</label><input id="e_score" type="number" step="1" placeholder="e.g. 740"><small class="err"></small></div>
+      <div class="field"><label for="e_amount">Desired loan amount (₹)</label><input id="e_amount" type="number" step="any" placeholder="e.g. 500000"><small class="err"></small></div>
+      <div class="field"><label for="e_tenure">Loan tenure (months, 6–360)</label><input id="e_tenure" type="number" step="1" placeholder="e.g. 60"><small class="err"></small></div>
+      <div class="btn-row">
+        <button class="btn primary" type="submit">Check Eligibility</button>
+        <button class="btn" type="button" id="eDemo">Load demo data</button>
+      </div>
+    </form>
+    <div id="eligResult" class="glass result empty"><p>Fill the form to see your estimate here.</p></div>
+  </div>
+  <p class="disclaimer">This is an educational estimate and not an actual loan approval.</p>
+</section>
+
+<!-- EMI -->
+<section id="emi" class="page">
+  <h2 class="section-title">EMI Calculator</h2>
+  <div class="two-col">
+    <form id="emiForm" class="glass form" novalidate>
+      <div class="field"><label for="m_amount">Loan amount (₹)</label><input id="m_amount" type="number" step="any" value="500000"><small class="err"></small></div>
+      <div class="field"><label for="m_rate">Annual interest rate (%)</label><input id="m_rate" type="number" step="any" value="10"><small class="err"></small></div>
+      <div class="field"><label for="m_tenure">Tenure (months)</label><input id="m_tenure" type="number" step="1" value="60"><small class="err"></small></div>
+      <div class="btn-row"><button class="btn primary" type="submit">Calculate EMI</button></div>
+      <p class="note">EMI = P × R × (1+R)ⁿ / ((1+R)ⁿ − 1), where R is the monthly rate and n the number of months.</p>
+    </form>
+    <div id="emiResult" class="glass result empty"><p>Enter values to calculate.</p></div>
+  </div>
+</section>
+
+<!-- CREDIT -->
+<section id="credit" class="page">
+  <h2 class="section-title">Credit Score Analyzer</h2>
+  <div class="two-col">
+    <form id="creditForm" class="glass form" novalidate>
+      <div class="field"><label for="c_score">Your credit score (300–900)</label><input id="c_score" type="number" step="1" placeholder="e.g. 720"><small class="err"></small></div>
+      <div class="btn-row"><button class="btn primary" type="submit">Analyze Score</button></div>
+      <p class="note">Credit score analysis is for educational purposes only. It is not an official credit bureau report.</p>
+    </form>
+    <div id="creditResult" class="glass result empty"><p>Enter a score to see the analysis.</p></div>
+  </div>
+</section>
+
+<!-- AI -->
+<section id="ai" class="page">
+  <h2 class="section-title">AI Financial Tips</h2>
+  <div class="glass form wide">
+    <form id="aiForm" novalidate>
+      <div class="field"><label for="a_q">Ask a finance question</label>
+        <textarea id="a_q" rows="3" maxlength="500" placeholder="e.g. How can I improve my credit score?"></textarea><small class="err"></small></div>
+      <div class="chips">
+        <button type="button" class="chip">How can I manage my monthly expenses?</button>
+        <button type="button" class="chip">How can I improve my credit score?</button>
+        <button type="button" class="chip">How much EMI can I reasonably afford?</button>
+        <button type="button" class="chip">How can I plan for a loan?</button>
+      </div>
+      <div class="btn-row"><button class="btn primary" type="submit" id="aiBtn">Get AI Guidance</button></div>
+    </form>
+    <div id="aiResult" class="ai-answer" hidden></div>
+  </div>
+  <p class="disclaimer">AI responses are educational guidance, not professional financial advice. Do not share personal identifiers.</p>
+</section>
+
+<!-- RECORDS -->
+<section id="records" class="page">
+  <h2 class="section-title">Financial Records</h2>
+  <div class="glass form wide">
+    <div class="btn-row">
+      <button class="btn primary" id="loadRecords">Load my records</button>
+      <button class="btn" id="demoRecords">Show demo records</button>
+    </div>
+    <p id="recStatus" class="note"></p>
+    <div class="table-wrap"><table id="recTable"><thead><tr>
+      <th>Date</th><th>Income</th><th>Employment</th><th>Age</th><th>Score</th><th>Loan</th><th>Tenure</th><th>EMI</th><th>Result</th>
+    </tr></thead><tbody></tbody></table></div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="page">
+  <h2 class="section-title">About the Project</h2>
+  <div class="grid">
+    <div class="card glass"><h3>Objective</h3><p>Help users understand basic loan eligibility, EMIs and credit scores, and get simple AI-based financial guidance.</p></div>
+    <div class="card glass"><h3>Technologies</h3><p>HTML5, CSS3, JavaScript, Node.js + Express, Anthropic Claude API, Google Sheets API.</p></div>
+    <div class="card glass"><h3>Main Modules</h3><p>Loan Eligibility, EMI Calculator, Credit Score Analyzer, AI Financial Tips, Records Dashboard.</p></div>
+    <div class="card glass"><h3>Benefits</h3><p>Explainable results, free to run locally, secure server-side API keys, privacy-friendly records.</p></div>
+    <div class="card glass"><h3>Limitations</h3><p>Uses simplified rules, not real bank policy or credit-bureau data. No login. AI answers can be imperfect.</p></div>
+    <div class="card glass"><h3>Future Scope</h3><p>Authentication, ML loan prediction, PDF reports, advanced credit-risk models, personalised dashboards, bank APIs, multilingual support, secure cloud database.</p></div>
+  </div>
+  <div class="glass form wide privacy"><h3>Privacy &amp; Disclaimer</h3>
+    <p>This platform does not collect names, PAN, Aadhaar or bank account details. Only the numbers you submit (income, age, score, loan details) are saved with a random anonymous session ID. All outputs are educational estimates and are not financial advice, a credit report or a loan approval.</p></div>
+</section>
+</main>
+
+<footer>© 2026 AI Financial Decision Support Platform · Educational project · Not a bank or financial advisor</footer>
+<script src="script.js"></script>
+</body>
+</html>

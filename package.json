@@ -1,0 +1,10 @@
+{
+  "name": "ai-financial-decision-platform",
+  "version": "1.0.0",
+  "description": "AI Financial Decision Support Platform - college BFSI project",
+  "main": "backend/server.js",
+  "scripts": { "start": "node backend/server.js", "dev": "node --watch backend/server.js" },
+  "engines": { "node": ">=18" },
+  "license": "MIT",
+  "dependencies": { "dotenv": "^16.4.5", "express": "^4.19.2", "googleapis": "^140.0.1" }
+}
